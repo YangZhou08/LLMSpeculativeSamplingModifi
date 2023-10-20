@@ -19,15 +19,20 @@ MODELZOO = {
     "bloom-560m": "/share_nfs/fangjiarui/root/code/hf_models/bloom-560m",
     "bloom7b": "/share_nfs/fangjiarui/root/code/hf_models/bloomz-7b1",
     "baichuan-7b": "/share_nfs/duanqiyuan/models/source_models/hf/baichuan-7B",
-    "baichuan-13b": "/share_nfs/duanqiyuan/models/source_models/hf/Baichuan-13B-Base",
-}
+    "baichuan-13b": "/share_nfs/duanqiyuan/models/source_models/hf/Baichuan-13B-Base", 
+    "pythia-160M": "EleutherAI/pythia-160m", 
+    "pythia-70M": "EleutherAI/pythia-70m", 
+    "pythia-2.8b": "EleutherAI/pythia-2.8b",    
+} 
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='args for main.py')
 
     parser.add_argument('--input', type=str, default="Suggest at least five related search terms to \"Mạng neural nhân tạo\".")
-    parser.add_argument('--approx_model_name', type=str, default=MODELZOO["bloom-560m"])
-    parser.add_argument('--target_model_name', type=str, default=MODELZOO["bloom7b"])
+    # parser.add_argument('--approx_model_name', type=str, default=MODELZOO["bloom-560m"]) 
+    parser.add_argument('--approx_model_name', type = str, default = MODELZOO['pythia-70M']) 
+    # parser.add_argument('--target_model_name', type=str, default=MODELZOO["bloom7b"]) 
+    parser.add_argument('--target_model_name', type = str, default = MODELZOO['pythia-2.8b']) 
     parser.add_argument('--verbose', '-v', action='store_true', default=False, help='enable verbose mode')
     parser.add_argument('--seed', '-s', type=int, default=None, help='set a random seed')
     args = parser.parse_args()

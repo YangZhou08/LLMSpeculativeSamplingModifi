@@ -72,8 +72,8 @@ def generate(input_text, approx_model_name, target_model_name, num_tokens=40, ra
     Decoder().set_tokenizer(tokenizer)
     
     print(f"begin loading models: \n {approx_model_name} \n {target_model_name}")
-    small_model = AutoModelForCausalLM.from_pretrained(approx_model_name, trust_remote_code=True).to(torch_device)
-    large_model = AutoModelForCausalLM.from_pretrained(target_model_name, trust_remote_code=True).to(torch_device)
+    small_model = AutoModelForCausalLM.from_pretrained(approx_model_name, trust_remote_code=True, cache_dir = "/rscratch/zhendong/yang_tasc").to(torch_device) 
+    large_model = AutoModelForCausalLM.from_pretrained(target_model_name, trust_remote_code=True, cache_dir = "/rscratch/zhendong/yang_tasc").to(torch_device) 
     print("finish loading models")
     
     input_ids = tokenizer.encode(input_text, return_tensors='pt').to(torch_device)
